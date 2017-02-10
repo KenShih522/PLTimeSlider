@@ -8,9 +8,9 @@
 
 import UIKit
 
-@IBDesignable class PLTimeSliderThumb: UIView {
+@IBDesignable public class PLTimeSliderThumb: UIView {
 
-    override func layoutSubviews() {
+    override public func layoutSubviews() {
         
         super.layoutSubviews()
         
@@ -18,7 +18,7 @@ import UIKit
         
     }
     
-    override func draw(_ rect: CGRect) {
+    override public func draw(_ rect: CGRect) {
         
         super.draw(rect)
         
@@ -50,7 +50,7 @@ import UIKit
         
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         
         super.init(coder: aDecoder)
         

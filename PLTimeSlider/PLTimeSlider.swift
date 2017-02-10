@@ -8,19 +8,19 @@
 
 import UIKit
 
-fileprivate func ToRadian(degree: CGFloat) -> CGFloat {
+public func ToRadian(degree: CGFloat) -> CGFloat {
     
     return CGFloat(M_PI) * degree / 180.0
     
 }
 
-fileprivate func ToDegree(radian: CGFloat) -> CGFloat {
+public func ToDegree(radian: CGFloat) -> CGFloat {
     
     return 180.0 * radian / CGFloat(M_PI)
     
 }
 
-fileprivate func AngleInClock(center: CGPoint, point: CGPoint) -> CGFloat {
+public func AngleInClock(center: CGPoint, point: CGPoint) -> CGFloat {
     
     var v = CGPoint(x: point.x - center.x, y: point.y - center.y)
     
@@ -46,7 +46,7 @@ fileprivate func AngleInClock(center: CGPoint, point: CGPoint) -> CGFloat {
     
 }
 
-fileprivate func PointInClock(center: CGPoint, radius: CGFloat, angle: CGFloat) -> CGPoint {
+public func PointInClock(center: CGPoint, radius: CGFloat, angle: CGFloat) -> CGPoint {
     
     let x = center.x + radius * cos(ToRadian(degree: angle - 90))
     
@@ -56,7 +56,7 @@ fileprivate func PointInClock(center: CGPoint, radius: CGFloat, angle: CGFloat) 
     
 }
 
-fileprivate func HourInClock(angle: CGFloat) -> UInt {
+public func HourInClock(angle: CGFloat) -> UInt {
     
     if angle > 360 {
         
@@ -72,7 +72,7 @@ fileprivate func HourInClock(angle: CGFloat) -> UInt {
     
 }
 
-fileprivate func AngleInHour(hour: UInt) -> CGFloat {
+public func AngleInHour(hour: UInt) -> CGFloat {
     
     var display_hour = hour
     
@@ -86,7 +86,7 @@ fileprivate func AngleInHour(hour: UInt) -> CGFloat {
     
 }
 
-fileprivate func DeltaOfAngle(last: CGFloat, current: CGFloat) -> CGFloat {
+public func DeltaOfAngle(last: CGFloat, current: CGFloat) -> CGFloat {
     
     if last < 90 && current > 270 {
         
@@ -120,7 +120,7 @@ public protocol PLTimeSliderDelegate: NSObjectProtocol {
     
 }
 
-@IBDesignable public class PLTimeSlider: UIView {
+@IBDesignable open class PLTimeSlider: UIView {
     
     @IBInspectable public var thumbWidth: CGFloat = 40
     
@@ -132,13 +132,13 @@ public protocol PLTimeSliderDelegate: NSObjectProtocol {
     
     public weak var delegate: PLTimeSliderDelegate?
     
-    var startThumb: PLTimeSliderThumb!
+    public var startThumb: PLTimeSliderThumb!
     
-    var endThumb: PLTimeSliderThumb!
+    public var endThumb: PLTimeSliderThumb!
     
-    var startAngle: CGFloat = 0
+    public var startAngle: CGFloat = 0
     
-    var endAngle: CGFloat = 0
+    public var endAngle: CGFloat = 0
     
     @IBInspectable public var startHour: UInt {
         
@@ -188,7 +188,7 @@ public protocol PLTimeSliderDelegate: NSObjectProtocol {
     
     // MARK: Gesture Methods
     
-    func pan(_ gesture: UIPanGestureRecognizer) {
+    open func pan(_ gesture: UIPanGestureRecognizer) {
         
         switch gesture.state {
             
@@ -328,7 +328,7 @@ public protocol PLTimeSliderDelegate: NSObjectProtocol {
     
     // MARK: Layout Methods
     
-    func updateThumbLayout(thumb: PLTimeSliderThumb, hour: UInt) {
+    public func updateThumbLayout(thumb: PLTimeSliderThumb, hour: UInt) {
         
         var display_hour = hour
         
@@ -342,7 +342,7 @@ public protocol PLTimeSliderDelegate: NSObjectProtocol {
         
     }
     
-    func updateThumbLayout(thumb: PLTimeSliderThumb, angle: CGFloat) {
+    public func updateThumbLayout(thumb: PLTimeSliderThumb, angle: CGFloat) {
         
         let inset = self.lineWidth / 2
         
@@ -366,7 +366,7 @@ public protocol PLTimeSliderDelegate: NSObjectProtocol {
         
     }
     
-    func updateArcPath(startAngle: CGFloat, endAngle: CGFloat) {
+    public func updateArcPath(startAngle: CGFloat, endAngle: CGFloat) {
         
         let inset = self.lineWidth / 2
         
@@ -386,7 +386,7 @@ public protocol PLTimeSliderDelegate: NSObjectProtocol {
         
     }
     
-    override public func layoutSubviews() {
+    override open func layoutSubviews() {
         
         super.layoutSubviews()
         
@@ -402,7 +402,7 @@ public protocol PLTimeSliderDelegate: NSObjectProtocol {
     
     // MARK: Draw Methods
 
-    override public func draw(_ rect: CGRect) {
+    override open func draw(_ rect: CGRect) {
      
         super.draw(rect)
         
@@ -420,7 +420,7 @@ public protocol PLTimeSliderDelegate: NSObjectProtocol {
     
     // MARK: Init Methods
     
-    func commonInit() {
+    open func commonInit() {
         
         self.startBtnGesture = UIPanGestureRecognizer(target: self, action: #selector(PLTimeSlider.pan(_:)))
         
@@ -444,9 +444,11 @@ public protocol PLTimeSliderDelegate: NSObjectProtocol {
         
         self.isInit = true
         
+        self.backgroundColor = UIColor.clear;
+        
     }
     
-    override init(frame: CGRect) {
+    public override init(frame: CGRect) {
         
         super.init(frame: frame)
         
