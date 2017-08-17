@@ -128,7 +128,7 @@ public protocol PLTimeSliderDelegate: NSObjectProtocol {
     
     @IBInspectable public var strokeColor: UIColor = UIColor.lightGray
     
-    @IBInspectable public var fillColor: UIColor = UIColor.orange
+    @IBInspectable public var fillColor: UIColor = UIColor(red: 165/255, green: 229/255, blue: 254/255, alpha: 1.0)
     
     public weak var delegate: PLTimeSliderDelegate?
     
