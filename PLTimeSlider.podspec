@@ -9,6 +9,7 @@ Pod::Spec.new do |s|
   s.platform      = :ios, "9.0"
   s.source        = { :git => "https://github.com/PatrickSCLin/PLTimeSlider.git", :tag => "0.0.2" }
   s.source_files  = Dir['PLTimeSlider/*']
+  s.exclude_files = "PLTimeSlider/Info.plist"
   s.requires_arc  = true
   
 end
