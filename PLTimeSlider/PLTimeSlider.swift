@@ -188,7 +188,7 @@ public protocol PLTimeSliderDelegate: NSObjectProtocol {
     
     // MARK: Gesture Methods
     
-    open func pan(_ gesture: UIPanGestureRecognizer) {
+    @objc open func pan(_ gesture: UIPanGestureRecognizer) {
         
         switch gesture.state {
             
